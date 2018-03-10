@@ -1,0 +1,14 @@
+package java.lang.reflect;
+
+import java.lang.annotation.Annotation;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.qual.EnsuresNonNullIf;
+
+public interface AnnotatedElement {
+    @EnsuresNonNullIf(expression = "getAnnotation(#1)", result = true)
+    @Pure boolean isAnnotationPresent(Class<? extends Annotation> arg0);
+    <T extends @Nullable Annotation> @Nullable T getAnnotation(Class<T> arg0);
+    Annotation[] getAnnotations();
+    Annotation[] getDeclaredAnnotations();
+}
